@@ -9,4 +9,4 @@ cd ../vote || exit
 pip install -r requirements.txt
 
 # Lancement du serveur
-python app.py
+python3 app.py
