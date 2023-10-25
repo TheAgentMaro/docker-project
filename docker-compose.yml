@@ -1,0 +1,56 @@
+version: '3'
+
+services:
+  result:
+    build:
+      context: ./result
+    ports:
+      - "80:80"
+    networks:
+      - appnet
+    depends_on:
+      - postgres
+    environment:
+      - POSTGRES_HOST=postgres
+    restart: always
+
+  vote:
+    build:
+      context: ./vote
+    ports:
+      - "8080:8080"
+    networks:
+      - appnet
+    depends_on:
+      - postgres
+    restart: always
+
+  worker:
+    build:
+      context: ./worker
+    networks:
+      - appnet
+    depends_on:
+      - postgres
+    restart: always
+
+  postgres:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    networks:
+      - appnet
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    restart: always
+
+networks:
+  appnet:
+    driver: bridge
+
+volumes:
+  postgres-data:

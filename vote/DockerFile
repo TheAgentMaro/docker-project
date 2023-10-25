@@ -1,0 +1,17 @@
+# Utilisez une image de base Python compatible avec votre application
+FROM python:3.11
+
+# Définissez le répertoire de travail
+WORKDIR /app
+
+# Copiez le code source de l'application
+COPY . /app
+
+# Installez les dépendances Python
+RUN pip install -r requirements.txt
+
+# Exposez le port sur lequel l'application écoute
+EXPOSE 8080
+
+# Commande pour démarrer l'application
+CMD ["python", "app.py"]
