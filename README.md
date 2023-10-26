@@ -35,7 +35,7 @@
     ```bash
     sudo apt-get update
     sudo apt install python3.11
-    node -v (#Verification Version)
+    python -v (#Verification Version)
 
 - Path access verification Package.json  "server.js" ("PATH TO server.js exp = //wsl.localhost/Ubuntu/home/user/docker-project/result/server.js )
 
