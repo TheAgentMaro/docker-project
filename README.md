@@ -9,8 +9,39 @@
 ### Prérequis
 
 - Assurez-vous d'avoir Docker et Docker Compose installés sur votre système.
+- Pour utiliser ubuntu sous windows vous devez installer WSL
+
+   ```bash
+   wsl --install
+
+- Documentation microsoft WSL :' https://learn.microsoft.com/fr-fr/windows/wsl/install '
+
+- Installation Dotnet (Ubuntu "WSL) :
+    ```bash
+    sudo apt-get update
+    sudo apt-get install -y dotnet-sdk-7.0.
+    sudo apt-get install -y aspnetcore-runtime-7.0.
+    sudo apt-get install -y dotnet-runtime-7.0.
+    sudo apt install zlib1g.
+    dotnet -v (#Verification Version)
+
+- Installation Nodejs (Ubuntu "WSL)
+    ```bash
+    sudo apt-get update
+    sudo apt install nodejs
+    node -v (#Verification Version)
+
+- Installation Python (Ubuntu "WSL)
+    ```bash
+    sudo apt-get update
+    sudo apt install python3.11
+    node -v (#Verification Version)
+
+- Path access verification Package.json  "server.js" ("PATH TO server.js exp = //wsl.localhost/Ubuntu/home/user/docker-project/result/server.js )
+
 
 ### Étapes
+
 
 1. Clonez ce référentiel dans un répertoire local :
 
@@ -22,16 +53,53 @@
    ```bash
    cd docker-project```
 
-3. Construisez et démarrez les conteneurs Docker avec Docker Compose :
+#### Methode 1 (Utilisation Docker Compose) :
+
+1. Construisez et démarrez les conteneurs Docker avec Docker Compose :
 
    ```bash
    docker-compose up -d```
 
-- Cela téléchargera les images Docker nécessaires, construira les images pour les modules "result," "vote," et "worker," puis démarrera tous les services.
+- Cela téléchargera les images Docker nécessaires, construira les images pour les modules "result," "vote," et "worker," puis démarrera tous les services en une seule commande :.
 
-4. Une fois les services démarrés, ouvrez un navigateur web et accédez à l'interface de l'application "result" via l'adresse http://localhost:80, et à l'interface de l'application "vote" via l'adresse http://localhost:8080.
+2. Une fois les services démarrés, ouvrez un navigateur web et accédez à l'interface de l'application "result" via l'adresse http://localhost:80, et à l'interface de l'application "vote" via l'adresse http://localhost:8080.
 
-5. Vous pouvez maintenant interagir avec l'application et effectuer des votes.
+#### Méthode 2 (Exécution manuelle avec des scripts) :
+
+1.  Ouvrez un terminal, puis naviguez vers le répertoire racine de votre projet "docker-project" où se trouvent les scripts "run" et le fichier docker-compose.yml.
+
+2.  Avant de commencer, assurez-vous que Docker est installé sur votre système.
+
+3.  Exécutez les scripts dans l'ordre indiqué, de 1 à 5, dans des terminaux séparés. Vous pouvez le faire en utilisant les commandes suivantes :
+
+- Redis :
+
+       ```bash
+    bash ./run/step-1.bash ```
+
+- l'application "vote" :
+      ```bash
+    bash ./run/step-2.bash ```
+
+- PostgreSQL :
+      ```bash
+    bash ./run/step-3.bash ```
+
+-  l'application "worker" :
+
+      ```bash
+    bash ./run/step-4.bash ```
+
+- l'application "result" :
+      ```bash
+    bash ./run/step-5.bash ```
+
+4. Une fois les scripts exécutés, les différentes parties de l'application devraient être accessibles localement. Vous pouvez accéder à l'interface "result" en ouvrant un navigateur et en visitant l'adresse http://localhost:80, et à l'interface "vote" à l'adresse http://localhost:8080.
+
+5. Remettre le projet dans son état initial :
+
+      ```bash
+    bash ./run/reset.bash ```
 
 ## Déploiement d'un Cluster Docker Swarm
 
