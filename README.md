@@ -126,7 +126,7 @@
 
 ## Contributeurs
 
-- Mohamed Marwen Meddeb - Student Engineer | Full Stack Developer
+- Mohamed Marwen Meddeb - Student Engineer SUPINFO | Full Stack Developer
 
 
 
