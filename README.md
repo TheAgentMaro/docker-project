@@ -73,22 +73,18 @@
 3.  Exécutez les scripts dans l'ordre indiqué, de 1 à 5, dans des terminaux séparés. Vous pouvez le faire en utilisant les commandes suivantes :
 
 - Redis :
-
       ```bash
       bash ./run/step-1.bash ```
 
 - l'application "vote" :
-
       ```bash
       bash ./run/step-2.bash ```
 
 - PostgreSQL :
-
       ```bash
       bash ./run/step-3.bash ```
 
 -  l'application "worker" :
-
       ```bash
       bash ./run/step-4.bash ```
 
