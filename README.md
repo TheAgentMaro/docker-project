@@ -108,6 +108,9 @@
 
 1. Construisez les images Docker pour les modules "result," "vote," et "worker" sur votre système local. Vous pouvez utiliser la commande docker build pour cela.
 
+      ```bash
+    docker build -t
+
 2. Exportez les images vers un registre Docker, tel que Docker Hub, en utilisant docker push.
 
 3. Sur votre cluster Docker Swarm, créez un fichier docker-compose.yml similaire à celui du projet local. Assurez-vous que le fichier contient les bonnes images Docker depuis le registre.
