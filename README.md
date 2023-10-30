@@ -55,14 +55,22 @@
 
 #### Methode 1 (Utilisation Docker Compose) :
 
-1. Construisez et démarrez les conteneurs Docker avec Docker Compose :
+1. Construction des images Docker :
+
+   ```bash
+      docker build -t result-app ./result
+      docker build -t vote-app ./vote
+      docker build -t worker-app ./worker
+   ```
+
+2. Lancement du Docker Compose :
 
    ```bash
    docker-compose up -d```
 
 - Cela téléchargera les images Docker nécessaires, construira les images pour les modules "result," "vote," et "worker," puis démarrera tous les services en une seule commande :.
 
-2. Une fois les services démarrés, ouvrez un navigateur web et accédez à l'interface de l'application "result" via l'adresse http://localhost:80, et à l'interface de l'application "vote" via l'adresse http://localhost:8080.
+3. Une fois les services démarrés, ouvrez un navigateur web et accédez à l'interface de l'application "result" via l'adresse http://localhost:80, et à l'interface de l'application "vote" via l'adresse http://localhost:8080.
 
 #### Méthode 2 (Exécution manuelle avec des scripts) :
 

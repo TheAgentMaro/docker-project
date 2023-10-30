@@ -1,7 +1,9 @@
-version: '3'
+version: '0.1'
 
 services:
   result:
+    image: result-app
+    container_name: result-container
     build:
       context: ./result
     ports:
@@ -15,6 +17,8 @@ services:
     restart: always
 
   vote:
+    image: vote-app
+    container_name: vote-container
     build:
       context: ./vote
     ports:
@@ -26,6 +30,8 @@ services:
     restart: always
 
   worker:
+    image: worker-app
+    container_name: worker-container
     build:
       context: ./worker
     networks:
@@ -36,6 +42,7 @@ services:
 
   postgres:
     image: postgres
+    container_name: postgres-container
     ports:
       - "5432:5432"
     environment:
@@ -46,6 +53,15 @@ services:
       - appnet
     volumes:
       - postgres-data:/var/lib/postgresql/data
+    restart: always
+
+  redis:
+    image: redis
+    container_name: redis-container
+    ports:
+      - "6379:6379"
+    networks:
+      - appnet
     restart: always
 
 networks:
