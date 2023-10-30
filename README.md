@@ -74,23 +74,23 @@
 
 - Redis :
       ```bash
-      bash ./run/step-1.bash
+      bash ./run/step-1.bash```
 
 - l'application "vote" :
       ```bash
-      bash ./run/step-2.bash
+      bash ./run/step-2.bash```
 
 - PostgreSQL :
       ```bash
-      bash ./run/step-3.bash
+      bash ./run/step-3.bash```
 
 -  l'application "worker" :
       ```bash
-      bash ./run/step-4.bash
+      bash ./run/step-4.bash```
 
 - l'application "result" :
       ```bash
-      bash ./run/step-5.bash
+      bash ./run/step-5.bash```
 
 4. Une fois les scripts exécutés, les différentes parties de l'application devraient être accessibles localement. Vous pouvez accéder à l'interface "result" en ouvrant un navigateur et en visitant l'adresse http://localhost:80, et à l'interface "vote" à l'adresse http://localhost:8080.
 
