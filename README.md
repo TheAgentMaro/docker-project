@@ -119,6 +119,8 @@
 
 ### Étapes
 
+![Screenshot](ScreenVMS.png)
+
 1. Construisez les images Docker pour les modules "result," "vote," et "worker" sur votre système local. Vous pouvez utiliser la commande docker build pour cela.
 
       ```bash
