@@ -11,7 +11,7 @@ let express = require("express"),
 
 io.set("transports", ["polling"])
 
-const port = 8888 //Le port pour afficher le résultat de vote 
+const port = 8081
 
 io.sockets.on("connection", function (socket) {
 
@@ -23,7 +23,7 @@ io.sockets.on("connection", function (socket) {
 })
 
 const pool = new pg.Pool({
-  connectionString: "postgres://postgres:postgres@localhost/postgres",
+  connectionString: "postgres://postgres:postgres@db/postgres",
 })
 
 async.retry(

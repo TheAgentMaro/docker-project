@@ -1,11 +1,11 @@
 # Image de base Python compatible avec votre application
 FROM python:3.11
 
-# Répertoire de travail
+#Rep
 WORKDIR /app
 
 # Le code source de l'application
-COPY . /app
+COPY . .
 
 # Les dépendances Python
 RUN pip install -r requirements.txt

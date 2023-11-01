@@ -68,9 +68,14 @@
    ```bash
    docker-compose up -d```
 
-- Cela téléchargera les images Docker nécessaires, construira les images pour les modules "result," "vote," et "worker," puis démarrera tous les services en une seule commande :.
+- Cela téléchargera les images Docker nécessaires, construira les images pour les modules "result," "vote," et "worker," puis démarrera tous les services en une seule commande.
 
-3. Une fois les services démarrés, ouvrez un navigateur web et accédez à l'interface de l'application "result" via l'adresse http://localhost:80, et à l'interface de l'application "vote" via l'adresse http://localhost:8080.
+3. Une fois les services démarrés, ouvrez un navigateur web et accédez à l'interface de l'application "result" via l'adresse http://localhost:8888, et à l'interface de l'application "vote" via l'adresse http://localhost:8080.
+
+5. Remettre le projet dans son état initial :
+
+   ```bash
+   docker-compose down```
 
 #### Méthode 2 (Exécution manuelle avec des scripts) :
 
@@ -100,7 +105,7 @@
       ```bash
       bash ./run/step-5.bash```
 
-4. Une fois les scripts exécutés, les différentes parties de l'application devraient être accessibles localement. Vous pouvez accéder à l'interface "result" en ouvrant un navigateur et en visitant l'adresse http://localhost:80, et à l'interface "vote" à l'adresse http://localhost:8080.
+4. Une fois les scripts exécutés, les différentes parties de l'application devraient être accessibles localement. Vous pouvez accéder à l'interface "result" en ouvrant un navigateur et en visitant l'adresse http://localhost:8888, et à l'interface "vote" à l'adresse http://localhost:8080.
 
 5. Remettre le projet dans son état initial :
       ```bash

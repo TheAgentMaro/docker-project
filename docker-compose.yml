@@ -1,72 +1,61 @@
-version: '0.1'
+version: '1'
 
 services:
-  result:
-    image: result-app
-    container_name: result-container
-    build:
-      context: ./result
-    ports:
-      - "8081:8081"
-    networks:
-      - appnet
-    depends_on:
-      - postgres
-    environment:
-      - POSTGRES_HOST=postgres
-    restart: always
 
   vote:
     image: vote-app
-    container_name: vote-container
     build:
       context: ./vote
     ports:
       - "8080:8080"
     networks:
-      - appnet
+      - frontend
+      - backend
     depends_on:
-      - postgres
-    restart: always
+      - redis
+
+  result:
+    image: result-app
+    build:
+      context: ./result
+    ports:
+      - "8081:8081"
+    networks:
+      - frontend
+      - backend
+    depends_on:
+      - db
 
   worker:
     image: worker-app
-    container_name: worker-container
     build:
       context: ./worker
     networks:
-      - appnet
+      - backend
     depends_on:
-      - postgres
-    restart: always
-
-  postgres:
-    image: postgres
-    container_name: postgres-container
-    ports:
-      - "5432:5432"
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: postgres
-    networks:
-      - appnet
-    volumes:
-      - postgres-data:/var/lib/postgresql/data
-    restart: always
-
+      - db
+      - redis
+  
   redis:
     image: redis
     container_name: redis-container
-    ports:
-      - "6379:6379"
     networks:
-      - appnet
-    restart: always
+      - backend
+
+  db:
+    image: postgres
+    container_name: db-container
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+    networks:
+      - backend
+    volumes:
+      - "db-data:/var/lib/postgresql/data"
 
 networks:
-  appnet:
-    driver: bridge
+  frontend:
+  backend:
 
 volumes:
-  postgres-data:
+  db-data:
