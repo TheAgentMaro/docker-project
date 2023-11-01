@@ -137,7 +137,6 @@
 
 5. L'application sera déployée sur votre cluster Docker Swarm et sera accessible via les adresses des nœuds manager ou via un équilibreur de charge si configuré.
 
-#### C'est tout ! Vous avez maintenant déployé l'application de vote sur un cluster Docker Swarm.
 
 ## Contributeurs
 
