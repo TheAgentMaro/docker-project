@@ -2,6 +2,21 @@ version: '3.7'
 
 services:
 
+  redis:
+    image: redis
+    networks:
+      - frontend
+
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+    volumes:
+      - post-data:/var/lib/postgresql/data
+    networks:
+      - backend
+
   vote:
     image: marwenmeddeb/voteapp
     ports:
@@ -28,20 +43,9 @@ services:
     deploy:
       replicas: 2
 
-
-  redis:
-    image: redis
-    networks:
-      - frontend
-
-  db:
-    image: postgres
-    environment:
-      POSTGRES_USER: "postgres"
-      POSTGRES_PASSWORD: "postgres"
-    networks:
-      - backend
-
 networks:
   frontend:
   backend:
+
+volumes:
+  post-data:
