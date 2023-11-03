@@ -184,4 +184,9 @@
 
 ![ServciesSwarm](ServciesSwarm.png) .
 
+- Vérification des services :
 
+   ```bash
+   sudo docker stack ps --format 'table {{.Name}}```
+
+![CheckServiceResult](CheckServiceResult.png)
