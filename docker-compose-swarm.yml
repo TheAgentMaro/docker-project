@@ -4,8 +4,8 @@ services:
 
   vote:
     image: marwenmeddeb/voteapp
-    build:
-      context: ./vote
+    ports:
+      - 8080:80
     networks:
       - frontend
     deploy:
@@ -13,8 +13,8 @@ services:
 
   result:
     image: marwenmeddeb/resultapp
-    build:
-      context: ./result
+    ports:
+      - 8081:80
     networks:
       - backend
     deploy:
@@ -22,8 +22,6 @@ services:
 
   worker:
     image: marwenmeddeb/workerapp
-    build:
-      context: ./worker
     networks:
       - frontend
       - backend
