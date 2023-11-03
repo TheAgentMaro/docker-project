@@ -119,7 +119,31 @@
 
 ### Étapes
 
+1. Création de 3 machines virtuelles 
+
 ![Screenshot](ScreenVMS.png)
+
+- Initialiser le nœud manager : 
+      ```bash
+    docker swarm init
+
+![Manager](Manager.png)
+
+- Initialiser deux nœud Worker : 
+      ```bash
+    docker swarm join --token VOTRE_JETON IP_DU_MANAGER:PORT
+
+- Worker 1 :
+
+![Worker](Worker1.png)
+
+- Worker 2 :
+
+![Worker](Worker2.png)
+
+- Result :
+
+![Result](Result.png)
 
 1. Construisez les images Docker pour les modules "result," "vote," et "worker" sur votre système local. Vous pouvez utiliser la commande docker build pour cela.
 
