@@ -4,8 +4,17 @@ services:
 
   redis:
     image: redis
+    ports:
+      - "6379"
     networks:
       - frontend
+    deploy:
+      replicas: 1
+      update_config:
+        parallelism: 2
+        delay: 10s
+      restart_policy:
+        condition: on-failure
 
   db:
     image: postgres
@@ -23,8 +32,14 @@ services:
       - 8080:80
     networks:
       - frontend
+    depends_on:
+      - redis
     deploy:
       replicas: 2
+      update_config:
+        parallelism: 2
+      restart_policy:
+        condition: on-failure
 
   result:
     image: marwenmeddeb/resultapp
@@ -32,8 +47,15 @@ services:
       - 8081:80
     networks:
       - backend
+    depends_on:
+      - db
     deploy:
-      replicas: 2
+      replicas: 1
+      update_config:
+        parallelism: 2
+        delay: 10s
+      restart_policy:
+        condition: on-failure
 
   worker:
     image: marwenmeddeb/workerapp
@@ -41,7 +63,16 @@ services:
       - frontend
       - backend
     deploy:
-      replicas: 2
+      mode: replicated
+      replicas: 1
+      labels: [APP=VOTING]
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+        max_attempts: 3
+        window: 120s
+      placement:
+        constraints: [node.role == manager]
 
 networks:
   frontend:
