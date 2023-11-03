@@ -4,8 +4,6 @@ services:
 
   redis:
     image: redis
-    ports:
-      - "6379"
     networks:
       - frontend
     deploy:
@@ -25,6 +23,15 @@ services:
       - post-data:/var/lib/postgresql/data
     networks:
       - backend
+    deploy:
+      replicas: 1
+      placement:
+        constraints: 
+          - node.hostname == manager
+      resources:
+        limits:
+          cpus: "0.4"
+          memory: "100m"
 
   vote:
     image: marwenmeddeb/voteapp
@@ -65,14 +72,14 @@ services:
     deploy:
       mode: replicated
       replicas: 1
-      labels: [APP=VOTING]
       restart_policy:
         condition: on-failure
         delay: 10s
         max_attempts: 3
         window: 120s
       placement:
-        constraints: [node.role == manager]
+        constraints: 
+          - node.hostname == manager
 
 networks:
   frontend:
