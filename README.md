@@ -131,7 +131,7 @@
 
 1. Configuration du cluster Docker Swarm 
 
-- Commencez par créer trois machines virtuelles pour votre cluster Docker Swarm. Une configuration typique inclut un nœud manager et deux nœuds worker
+- On commence par créer trois machines virtuelles pour votre cluster Docker Swarm. Une configuration typique inclut un nœud manager et deux nœuds worker
 
 ![Screenshot](ScreenVMS.png)
 
@@ -187,6 +187,6 @@
 - Vérification des services :
 
    ```bash
-   sudo docker stack ps --format 'table {{.Name}}```
+   sudo docker stack ps --format 'table {{.Name}}|t{{.Node}}\t{{.CurrentState}}``` voteapp
 
 ![CheckServiceResult](CheckServiceResult.png)
