@@ -178,7 +178,7 @@
 4. Déploiement de l'application sur le cluster Docker Swarm en utilisant la commande docker stack deploy avec le fichier docker-compose.yml.
 
    ```bash
-   docker stack deploy -c docker-compose.yml vote-app```
+   docker stack deploy -c docker-compose-swarm.yml vote-app```
 
 5. L'application sera déployée sur votre le Docker Swarm et sera accessible via les adresses des nœuds manager 
 
