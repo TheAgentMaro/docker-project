@@ -25,9 +25,6 @@ services:
       - backend
     deploy:
       replicas: 1
-      placement:
-        constraints: 
-          - node.hostname == manager
       resources:
         limits:
           cpus: "0.4"
@@ -77,10 +74,7 @@ services:
         delay: 10s
         max_attempts: 3
         window: 120s
-      placement:
-        constraints: 
-          - node.hostname == manager
-
+        
 networks:
   frontend:
   backend:
