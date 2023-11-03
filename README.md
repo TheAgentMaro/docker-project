@@ -182,4 +182,6 @@
 
 5. L'application sera déployée sur votre le Docker Swarm et sera accessible via les adresses des nœuds manager 
 
+![ServciesSwarm](ServciesSwarm.png) .
+
 
