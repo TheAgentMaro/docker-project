@@ -1,0 +1,51 @@
+version: '3.7'
+
+services:
+
+  vote:
+    image: marwenmeddeb/voteapp
+    build:
+      context: ./vote
+    networks:
+      - frontend
+    deploy:
+      replicas: 2
+
+  result:
+    image: marwenmeddeb/resultapp
+    build:
+      context: ./result
+    networks:
+      - backend
+    deploy:
+      replicas: 2
+
+  worker:
+    image: marwenmeddeb/workerapp
+    build:
+      context: ./worker
+    networks:
+      - frontend
+      - backend
+    deploy:
+      replicas: 2
+
+
+  redis:
+    image: redis
+    container_name: redis-container
+    networks:
+      - frontend
+
+  db:
+    image: postgres
+    container_name: db-container
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+    networks:
+      - backend
+
+networks:
+  frontend:
+  backend:

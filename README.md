@@ -2,6 +2,16 @@
 
 - Ce projet consiste à containeriser une application de vote distribuée en utilisant Docker et à la déployer sur un cluster Docker Swarm.
 
+## Architecture
+
+![architecture](architecture.png)
+
+   - vote : une application web Python qui permet de voter pour l'une des deux options.
+   - worker : un service .NET qui consomme les votes depuis une instance Redis et les stocke dans une base de données PostgreSQL.
+   - result : une application web Node.js qui affiche les résultats du vote en temps réel.
+   - Une instance de PostgreSQL pour stocker les votes.
+   - Une instance de Redis pour les transmettre.
+
 ## Exécution de l'Application Localement
 
 - Pour exécuter l'application localement, suivez les étapes ci-dessous :
@@ -119,7 +129,9 @@
 
 ### Étapes
 
-1. Création de 3 machines virtuelles 
+1. Configuration du cluster Docker Swarm 
+
+- Commencez par créer trois machines virtuelles pour votre cluster Docker Swarm. Une configuration typique inclut un nœud manager et deux nœuds worker
 
 ![Screenshot](ScreenVMS.png)
 
@@ -141,30 +153,33 @@
 
 ![Worker](Worker2.png)
 
-- Result :
+- Result des nodes :
 
 ![Result](Result.png)
 
-1. Construisez les images Docker pour les modules "result," "vote," et "worker" sur votre système local. Vous pouvez utiliser la commande docker build pour cela.
+2. Construction et mise en place des images Docker vote-app, worker-app, result-app exportez les images vers un registre Docker en utilisant docker push. :
 
       ```bash
     docker build -t
+      
+    docker push tag/vote-app
 
-2. Exportez les images vers un registre Docker, tel que Docker Hub, en utilisant docker push.
+    docker push tag/worker-app
 
-3. Sur votre cluster Docker Swarm, créez un fichier docker-compose.yml similaire à celui du projet local. Assurez-vous que le fichier contient les bonnes images Docker depuis le registre.
+    docker push tag/result-app
 
-4. Déployez l'application sur le cluster Docker Swarm en utilisant la commande docker stack deploy avec votre fichier docker-compose.yml.
+![DockerPush ](DockerPush.png)
+
+
+3. Création d'un fichier docker-compose-swarm similaire à  docker-compose.yml qui contient les bonnes images Docker depuis le registre.
+
+- docker-compose-swarm.yml
+
+4. Déploiement de l'application sur le cluster Docker Swarm en utilisant la commande docker stack deploy avec le fichier docker-compose.yml.
 
    ```bash
    docker stack deploy -c docker-compose.yml vote-app```
 
-5. L'application sera déployée sur votre cluster Docker Swarm et sera accessible via les adresses des nœuds manager ou via un équilibreur de charge si configuré.
-
-
-## Contributeurs
-
-- Mohamed Marwen Meddeb - Student Engineer SUPINFO | Full Stack Developer
-
+5. L'application sera déployée sur votre le Docker Swarm et sera accessible via les adresses des nœuds manager 
 
 
