@@ -11,6 +11,7 @@ let express = require("express"),
 
 io.set("transports", ["polling"])
 
+// Port de l'application nodejs (result-app)
 const port = 8081
 
 io.sockets.on("connection", function (socket) {

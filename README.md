@@ -18,7 +18,7 @@
 
 ### Prérequis
 
-- Assurez-vous d'avoir Docker et Docker Compose installés sur votre système.
+- Installation du docker docker compose sur le systéme :
 - Pour utiliser ubuntu sous windows vous devez installer WSL
 
    ```bash
@@ -51,7 +51,6 @@
 
 
 ### Étapes
-
 
 1. Clonez ce référentiel dans un répertoire local :
 
