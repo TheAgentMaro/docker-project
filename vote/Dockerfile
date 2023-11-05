@@ -1,4 +1,3 @@
-# Image de base Python compatible avec votre application
 FROM python:3.11
 
 #Rep

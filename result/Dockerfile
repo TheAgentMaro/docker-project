@@ -1,4 +1,3 @@
-# Une image de base Node.js compatible avec votre application
 FROM node:18
 
 # Le répertoire de travail

@@ -1,4 +1,4 @@
-#Build application*
+#Build application
 FROM --platform=${BUILDPLATFORM} mcr.microsoft.com/dotnet/sdk:7.0 as build
 ARG TARGETPLATFORM
 ARG TARGETARCH
