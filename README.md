@@ -212,7 +212,7 @@
 
 ![App](./images/Manageapp.png)
 
-Result app sur la machine de manager :
+- Result app sur la machine de manager :
 
    - http://192.168.244.133:8081/  :
 
