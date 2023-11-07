@@ -4,7 +4,7 @@
 
 ## Architecture
 
-![architecture](architecture.png)
+![architecture](./images/architecture.png)
 
    - vote : une application web Python qui permet de voter pour l'une des deux options.
 
@@ -128,11 +128,11 @@
 
 - Vote app : http://localhost:8080 
 
-![resultat](resultat.png)
+![resultat](./images/resultat.png)
 
 - Result app : http://localhost:8081
 
-![resultapp](resultapp.png)
+![resultapp](./images/resultapp.png)
 
 
 ## Déploiement d'un Cluster Docker Swarm
@@ -147,13 +147,13 @@
 
 - On commence par créer trois machines virtuelles pour votre cluster Docker Swarm. Une configuration typique inclut un nœud manager et deux nœuds worker
 
-![Screenshot](ScreenVMS.png)
+![Screenshot](./images/ScreenVMS.png)
 
 - Initialiser le nœud manager : 
       ```bash
     docker swarm init
 
-![Manager](Manager.png)
+![Manager](./images/Manager.png)
 
 - Initialiser deux nœud Worker : 
       ```bash
@@ -161,15 +161,15 @@
 
 - Worker 1 :
 
-![Worker](Worker1.png)
+![Worker](./images/Worker1.png)
 
 - Worker 2 :
 
-![Worker](Worker2.png)
+![Worker](./images/Worker2.png)
 
 - Result des nodes :
 
-![Result](Result.png)
+![Result](./images/Result.png)
 
 2. Construction et mise en place des images Docker vote-app, worker-app, result-app exportez les images vers un registre Docker en utilisant docker push. :
 
@@ -182,7 +182,7 @@
 
     docker push tag/result-app
 
-![DockerPush ](DockerPush.png)
+![DockerPush ](./images/DockerPush.png)
 
 
 3. Création d'un fichier docker-compose-swarm similaire à  docker-compose.yml qui contient les bonnes images Docker depuis le registre.
@@ -196,11 +196,11 @@
 
 5. L'application sera déployée sur votre le Docker Swarm et sera accessible via les adresses des nœuds manager 
 
-![ServciesSwarm](ServciesSwarm.png) .
+![ServciesSwarm](./images/ServciesSwarm.png) .
 
 - Vérification des services :
 
    ```bash
    sudo docker stack ps --format 'table {{.Name}}|t{{.Node}}\t{{.CurrentState}}``` voteapp
 
-![CheckServiceResult](CheckServiceResult.png)
+![CheckServiceResult](./images/CheckServiceResult.png)
