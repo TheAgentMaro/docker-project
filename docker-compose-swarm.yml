@@ -5,9 +5,9 @@ services:
   redis:
     image: redis
     networks:
-      - frontend
+      - backend
     deploy:
-      replicas: 1
+      replicas: 1 
 
   db:
     image: postgres
@@ -28,6 +28,7 @@ services:
       - 8080:80
     networks:
       - frontend
+      - backend
     depends_on:
       - redis
     deploy:
@@ -39,6 +40,7 @@ services:
     ports:
       - 8081:80
     networks:
+      - frontend
       - backend
     depends_on:
       - db
@@ -48,7 +50,6 @@ services:
   worker:
     image: marwenmeddeb/workerapp
     networks:
-      - frontend
       - backend
     deploy:
       replicas: 3
