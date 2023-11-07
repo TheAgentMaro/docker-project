@@ -7,7 +7,7 @@
 ![architecture](architecture.png)
 
    - vote : une application web Python qui permet de voter pour l'une des deux options.
-   
+
    - worker : un service .NET qui consomme les votes depuis une instance Redis et les stocke dans une base de données PostgreSQL.
 
    - result : une application web Node.js qui affiche les résultats du vote en temps réel.
@@ -123,6 +123,17 @@
 5. Remettre le projet dans son état initial :
       ```bash
     bash ./run/reset.bash
+
+### Résultat
+
+- Vote app : http://localhost:8080 
+
+![resultat](resultat.png)
+
+- Result app : http://localhost:8081
+
+![resultapp](resultapp.png)
+
 
 ## Déploiement d'un Cluster Docker Swarm
 
