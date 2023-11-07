@@ -205,3 +205,15 @@
    sudo docker stack ps --format 'table {{.Name}}|t{{.Node}}\t{{.CurrentState}}``` voteapp
 
 ![CheckServiceResult](./images/CheckServiceResult.png)
+
+- Vote app sur la machine de manager : 
+
+   - http://192.168.244.133:8080/  :
+
+![App](./images/Manageapp.png)
+
+Result app sur la machine de manager :
+
+   - http://192.168.244.133:8081/  :
+
+![Result](./images/Manageresult.png)
