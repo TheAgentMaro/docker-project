@@ -1,4 +1,4 @@
-version: '3.7'
+version: '3.8'
 
 services:
 
@@ -8,11 +8,6 @@ services:
       - frontend
     deploy:
       replicas: 1
-      update_config:
-        parallelism: 2
-        delay: 10s
-      restart_policy:
-        condition: on-failure
 
   db:
     image: postgres
@@ -25,10 +20,7 @@ services:
       - backend
     deploy:
       replicas: 1
-      resources:
-        limits:
-          cpus: "0.4"
-          memory: "100m"
+
 
   vote:
     image: marwenmeddeb/voteapp
@@ -39,11 +31,8 @@ services:
     depends_on:
       - redis
     deploy:
-      replicas: 2
-      update_config:
-        parallelism: 2
-      restart_policy:
-        condition: on-failure
+      replicas: 3
+
 
   result:
     image: marwenmeddeb/resultapp
@@ -54,12 +43,7 @@ services:
     depends_on:
       - db
     deploy:
-      replicas: 1
-      update_config:
-        parallelism: 2
-        delay: 10s
-      restart_policy:
-        condition: on-failure
+      replicas: 3
 
   worker:
     image: marwenmeddeb/workerapp
@@ -68,12 +52,8 @@ services:
       - backend
     deploy:
       mode: replicated
-      replicas: 1
-      restart_policy:
-        condition: on-failure
-        delay: 10s
-        max_attempts: 3
-        window: 120s
+      replicas: 3
+
         
 networks:
   frontend:
